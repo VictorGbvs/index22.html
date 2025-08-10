@@ -1,1 +1,59 @@
-https://www.facebook.com/privacy/consent/gdp/?params%5Bapp_id%5D=285025889266955&params%5Bauth_type%5D="rerequest"&params%5Bfblfb%5D=false&params%5Bkid_directed_site%5D=false&params%5Blogger_id%5D="10316254-8ab5-4090-8a8d-addf70380f17"&params%5Bnext%5D="confirm"&params%5Bredirect_uri%5D="fbconnect%3A%5C%2F%5C%2Fcct.com.scopely.monopolygs"&params%5Bresponse_type%5D="token"&params%5Breturn_scopes%5D=false&params%5Bscope%5D=%5B"openid"%2C"user_friends"%2C"email"%5D&params%5Bsteps%5D=%7B%7D&params%5Btp%5D="unspecified"&params%5Bcui_gk%5D="%5BPASS%5D%3A"&params%5Bis_limited_login_shim%5D=false&source=gdp_delegated&_rdr#origin=fbconnect://cct.com.scopely.monopolygs
+  <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Consentimento - Monopoly GO</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+    }
+    h2 {
+      color: #1c1e21;
+    }
+    p {
+      color: #606770;
+      margin-bottom: 30px;
+    }
+    button {
+      background-color: #1877f2;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #165ec9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Permitir acesso ao Monopoly GO?</h2>
+    <p>Este aplicativo solicita acesso ao seu perfil público, lista de amigos e e-mail.</p>
+    <button onclick="confirmConsent()">Confirmar</button>
+  </div>
+
+  <script>
+    function confirmConsent() {
+      const redirectUri = "https://www.facebook.com/dialog/return/arbiter#origin=fbconnect://cct.com.scopely.monopolygs";
+      window.location.href = redirectUri;
+    }
+  </script>
+</body>
+</html>
+
