@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login com Facebook</title>
+</head>
+<body>
+  <h1>Login com Facebook</h1>
+  <a href="https://www.facebook.com/v17.0/dialog/oauth?client_id=1309702847497831&redirect_uri=https://victorgbvs.github.io/extratortoken/index.html&response_type=token&scope=email,user_friends">
+    <button>Entrar com Facebook</button>
+  </a>
+
+  <h2>Token capturado:</h2>
+  <p id="token"></p>
+
+  <script>
+    const hash = window.location.hash;
+    const params = new URLSearchParams(hash.substring(1));
+    const token = params.get("access_token");
+    document.getElementById("token").textContent = token || "Nenhum token encontrado.";
+  </script>
+</body>
+</html>
