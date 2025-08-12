@@ -1,59 +1,36 @@
-  <!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Consentimento - Monopoly GO</title>
+  <title>Token Capturado</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f0f2f5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-    .container {
-      background: white;
+      font-family: monospace;
+      background-color: #fff;
+      color: #333;
       padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       text-align: center;
-      max-width: 400px;
     }
-    h2 {
-      color: #1c1e21;
-    }
-    p {
-      color: #606770;
-      margin-bottom: 30px;
-    }
-    button {
-      background-color: #1877f2;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 16px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #165ec9;
+    #token {
+      word-break: break-word;
+      background: #f0f0f0;
+      padding: 20px;
+      border-radius: 8px;
+      display: inline-block;
+      max-width: 90%;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Permitir acesso ao Monopoly GO?</h2>
-    <p>Este aplicativo solicita acesso ao seu perfil público, lista de amigos e e-mail.</p>
-    <button onclick="confirmConsent()">Confirmar</button>
-  </div>
+  <h2>✅ Token de Acesso Capturado</h2>
+  <div id="token">Carregando...</div>
 
   <script>
-    function confirmConsent() {
-      const redirectUri = "https://www.facebook.com/dialog/return/arbiter#origin=fbconnect://cct.com.scopely.monopolygs";
-      window.location.href = redirectUri;
-    }
+    const fragment = window.location.hash.substring(1);
+    const params = new URLSearchParams(fragment);
+    const token = params.get("access_token");
+
+    document.getElementById("token").textContent = token || "Token não encontrado.";
   </script>
 </body>
 </html>
-
