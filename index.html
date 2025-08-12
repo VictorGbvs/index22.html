@@ -1,36 +1,46 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Token Capturado</title>
-  <style>
-    body {
-      font-family: monospace;
-      background-color: #fff;
-      color: #333;
-      padding: 40px;
-      text-align: center;
-    }
-    #token {
-      word-break: break-word;
-      background: #f0f0f0;
-      padding: 20px;
-      border-radius: 8px;
-      display: inline-block;
-      max-width: 90%;
-    }
-  </style>
+  <title>Login com Facebook - Estudo Monopoly GO</title>
 </head>
 <body>
-  <h2>✅ Token de Acesso Capturado</h2>
-  <div id="token">Carregando...</div>
+  <h2>Login com Facebook</h2>
+  <fb:login-button 
+    scope="public_profile,email"
+    onlogin="checkLoginState();">
+  </fb:login-button>
 
   <script>
-    const fragment = window.location.hash.substring(1);
-    const params = new URLSearchParams(fragment);
-    const token = params.get("access_token");
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '285025889266955', // ID do Monopoly GO
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v19.0' // Use a versão mais recente da Graph API
+      });
 
-    document.getElementById("token").textContent = token || "Token não encontrado.";
+      FB.AppEvents.logPageView();   
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+
+    function checkLoginState() {
+      FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+          const accessToken = response.authResponse.accessToken;
+          console.log("Token de acesso:", accessToken);
+          document.body.innerHTML = ""; // Página em branco
+        } else {
+          alert("Login não autorizado.");
+        }
+      });
+    }
   </script>
 </body>
 </html>
